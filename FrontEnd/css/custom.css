@@ -1,0 +1,273 @@
+body{
+	font-family: "Helvetica Neue",Helvetica,Arial,;
+}
+
+a{
+	outline: 0;
+}
+
+.navbar-default {
+	background-color: #CBB677;
+	margin-bottom: 0;
+	border: none;
+	border-radius: 0px;
+}
+
+.logo {
+	width: 120px;
+	height: 80px;
+	padding: 10px 15px;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+	height: 80px;
+	line-height: 80px;
+	padding: 0 25px;
+	font-size:1.3em;
+	color: #450084;
+}
+
+.navbar-brand{
+	padding-right: 0px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #450084;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: #450084;	
+	background-color: #D5BE7A;
+}
+
+.navbar-default .navbar-nav > .active > a,
+ .navbar-default .navbar-nav > .active > a:focus,
+  .navbar-default .navbar-nav > .active > a:hover{
+  	background-color: #DDCB95;
+  	color: #450084;
+}
+
+.navbar-default .navbar-toggle {
+	margin-top: 25px;
+}
+  
+/* social icons */
+li.facebook a {
+	width: 80px;
+	color: #3B5998 !important;
+	background-color: #CBB677;
+	font-size: 2.2em;
+	text-align: center;
+	box-shadow: none;	
+}
+
+/* HEADER */
+header {
+	height: 15em;
+	text-align: center;
+	background-color: #D5BE7A;
+	opacity: 0.8;
+	padding-top: 2em;	
+}
+
+header h2 {
+	font-size: 4em;
+	color: #450084;
+}
+
+header p {
+	color:#000000;
+	text-align: center;
+	font-size: 2em;
+}
+
+
+
+
+
+
+/*-- Gradient-- */
+.gradient {
+    background-color: #eadfbd;
+    /* IE9, iOS 3.2+ */
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBzdG9wLWNvbG9yPSIjZDViZTdhIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,color-stop(0, rgb(213, 190, 122)),color-stop(1, rgb(255, 255, 255)));
+    /* Android 2.3 */
+    background-image: -webkit-repeating-linear-gradient(top,rgb(213, 190, 122) 0%,rgb(255, 255, 255) 100%);
+    /* IE10+ */
+    background-image: repeating-linear-gradient(to bottom,rgb(213, 190, 122) 0%,rgb(255, 255, 255) 100%);
+    background-image: -ms-repeating-linear-gradient(top,rgb(213, 190, 122) 0%,rgb(255, 255, 255) 100%);
+}
+ 
+ 
+/* IE8- CSS hack */
+@media \0screen\,screen\9 {
+    .gradient {
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffd5be7a",endColorstr="#ffffffff",GradientType=0);
+    }
+}
+/*-- /Gradient-- */
+
+
+
+
+
+
+/* HOME MAIN CONTENT */
+#clicks{
+	padding: 0;
+	text-align: center;
+}
+
+#buy, #sell{
+	width: 100%;
+	font-size: 20em;
+	text-align: center;
+	margin-top: 60px;
+	opacity:.8;
+}
+
+#buy{
+	color: green;
+	margin-left: 15%;
+	width: 1em;
+}
+
+#sell{
+	color: red;
+	margin-right: 15%;
+	width: 1em;
+}
+
+#buyLab{
+	margin-left: 15%
+}
+
+#sellLab{
+	margin-right: 15%;
+}
+
+h1.label{
+	font-size: 5em;
+	color:#000000;
+	opacity: 0.8;
+}
+
+
+
+
+
+/* BUYPAGE MAIN CONTENT */
+
+.outline{
+	background-color: #D5BE7A;
+	padding: 10px;
+	border-radius: 6px;
+}
+
+.input-group.input-group-lg{
+	margin-bottom: 0.5%;
+}
+
+ul.list-group{
+	max-height: 20em;
+	overflow: scroll;
+}
+
+li.list-group-item{
+	background-color: #D5BE7A;
+}
+
+li.list-group-item:first-child{
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+div.list-group{
+	margin-bottom: 0px;
+}
+/* BUYPAGE MAIN CONTENT */
+
+
+
+
+
+/* SELLPAGE MAIN CONTENT */
+
+/* SELLPAGE MAIN CONTENT */
+
+
+
+
+/*--Responsive Changes--*/
+
+@media (max-width: 768px) {
+	.navbar-default .navbar-nav>li>a {
+		width: 100%;
+		border-bottom: 1px solid #450084;
+		text-align: center;
+	}
+	
+	li.facebook a {
+		font-size: 4.4em;
+	}
+	header{
+		height: 10em;
+		padding-top: 1em;
+	}
+	header h2 {
+		font-size: 3em;
+	}
+	header p{
+		font-size: 1.5em;
+	}
+	#buy, #sell{
+		width: 1em;
+		font-size: 15em;
+		text-align: center;
+		margin-top: 40px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#buyLab, #sellLab{
+		margin: 0px;
+		display: block;
+	}
+}
+
+@media (max-width: 600px) {
+	header h2 {
+		font-size: 2.5em;
+	}	
+	header p{
+		font-size: 1em;
+	}
+}
+
+@media (max-width: 500px) {
+	header h2 {
+		font-size: 2em;
+	}
+	header p {
+		text-align: center;
+	}	
+}
+
+@media (max-width: 400px) {
+	header h2 {
+		font-size: 1.5em;
+	}	
+	header p {
+		text-align: center;
+	}	
+}
+
+@media (max-width: 300px) {
+	header h2 {
+		font-size: 1.5em;
+	}
+	header p {
+		font-size: 0.75em;
+	}	
+}
