@@ -51,7 +51,8 @@ function validateSellInfo(){
 	var price = getInput("Price");
 	
 	if (isbn != "" && price != ""){
-		sendSellInfo();		
+		sendSellInfo();	
+		window.alert("Your Post has been created!")	
 	}
 	
 	else {
