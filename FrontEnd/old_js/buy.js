@@ -48,12 +48,17 @@ function validateBuyInfo(){
 	var author = getInput("Author");
 	var isbn = getInput("ISBN");
 	var course = getInput("Course");
-	
+
+	//remove existing results from DOC, 
+	var contentToRemove = document.querySelectorAll("#results");
+	$(contentToRemove).remove(); 
+
+	//conditional for sending required information
 	if (title != "" || author != "" || isbn != "" || course != ""){
 		sendBuyInfo();		
 	}
 	
 	else {
-		window.alert("Please make sure at least one field is filled");
+		swal("Oops...", "Please make sure at least one field is filled", "error");
 	}
 }

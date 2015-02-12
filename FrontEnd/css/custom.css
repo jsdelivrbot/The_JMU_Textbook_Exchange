@@ -122,7 +122,7 @@ header p {
 	padding-top: 10%;
 	padding-bottom: 10%;
 	border-radius: 25px;
-	font-size: 2em;
+	font-size: 3em;
 	color:#fff;
 	text-align:center;
 	background:#D5BE7A;
@@ -167,15 +167,22 @@ hover:#buy, hover:#sell{
 	padding: 10px;
 	border-radius: 6px;
 	margin-bottom: 30px;
+	-webkit-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+	-moz-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+	box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+}
+
+#resultsOutline{
+	-webkit-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+	-moz-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+	box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+	border-radius: 6px;
+	overflow: scroll;
+	max-height: 20em;
 }
 
 .input-group.input-group-lg{
 	margin-bottom: 0.5%;
-}
-
-ul.list-group{
-	max-height: 20em;
-	overflow: scroll;
 }
 
 li.list-group-item{
@@ -197,6 +204,10 @@ div.list-group{
 
 
 /* SELLPAGE MAIN CONTENT */
+.sweet-alert section p{
+	text-align: justify;
+	margin-left: 20%;
+}
 
 /* SELLPAGE MAIN CONTENT */
 

@@ -61,6 +61,63 @@ function sendBuyInfo() {
     		console.log(xmlhttp.responseText);
     		var response = JSON.parse(xmlhttp.responseText);
     		console.log(response);
+
+    		arrayLength = response.textbook.length;
+
+
+    		for (var i = 0; i < arrayLength; i++){
+
+    			var container = $('#resultsOutline');
+
+    			var unordered = document.createElement("UL");
+    			unordered.className = "list-group";
+	    		unordered.setAttribute("id", "results");
+	    		container.append(unordered);
+
+
+	    		var list = document.createElement("LI");
+	    		list.className = "list-group-item";
+	    		unordered.appendChild(list);
+
+	    		var div = document.createElement("DIV");
+	    		div.className = "list-group";
+	    		list.appendChild(div);
+
+	    		var link = document.createElement("A");
+	    		link.setAttribute("href", "#");
+	    		link.className= "list-group-item";
+	    		div.appendChild(link);
+
+	    		var header = document.createElement("H4");
+	    		header.className = "list-group-item-heading";
+	    		header.innerHTML= response.textbook[i].title;
+
+				var p1 = document.createElement("P");
+				p1.className= "list-group-item-text";
+				p1.innerHTML= response.textbook[i].author;
+
+				var p2 = document.createElement("P");
+				p2.className= "list-group-item-text";
+				p2.innerHTML= response.textbook[i].course;
+
+				var p3 = document.createElement("P");
+				p3.className= "list-group-item-text";
+				p3.innerHTML= response.textbook[i].isbn;
+
+				var p4 = document.createElement("P");
+				p4.className= "list-group-item-text";
+				p4.innerHTML= response.textbook[i].price;
+
+				link.appendChild(header);
+				link.appendChild(p1);
+				link.appendChild(p2);
+				link.appendChild(p3);
+				link.appendChild(p4);
+			}				
+
+			
+
+    		/**
     		document.getElementById("li_title").innerHTML= response.textbook[0].title;
     		document.getElementById("li_author").innerHTML= response.textbook[0].author;
     		//document.getElementById("lli_ISBN").innerHTML= "Null";
@@ -72,6 +129,7 @@ function sendBuyInfo() {
     		//document.getElementById("lli_ISBN_2").innerHTML= "Null";
     		document.getElementById("li_Course_2").innerHTML= response.textbook[1].course;
     		document.getElementById("li_Price_2").innerHTML= response.textbook[1].price;
+    		*/
    		}
 	};
 
@@ -99,7 +157,9 @@ function sendSellInfo() {
 	var price = document.getElementById("Price").value;
 
 	var parameter = "title="+title+"&author="+author+"&edition=" +edition+"&publisher="+publisher+
-		"&year="+year+"&isbn="+isbn+"&courseNo="+course+"&department="+department+"&price="+price; 
+		"&year="+year+"&isbn="+isbn+"&courseNo="+course+"&department="+department+"&price="+price;
+
+		 
 	
 	var xmlhttp;
 	

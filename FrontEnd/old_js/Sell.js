@@ -5,6 +5,8 @@
  * search values
  */
 
+
+
 /**
  *The initial function that loads on startup
  *  
@@ -12,6 +14,7 @@
 function init(){
 	registerEventHandlers();	
 }
+
 
 /**
  *The event handlers for the web app 
@@ -21,7 +24,8 @@ function registerEventHandlers(){
 	
 	searchButton = document.getElementById("createPost_Button");
     searchButton.addEventListener("click", function() { 
-    validateSellInfo();}, true);	
+    	validateSellInfo();
+	}, true);	
 }
 
 /**
@@ -43,19 +47,47 @@ function getInput(name){
  *This is a function that adds to the global array when a new password and username is created
  */
 function validateSellInfo(){
+
+	//these variables may not be needed
 	var title = getInput("Title");
 	var author = getInput("Author");
 	var isbn = getInput("ISBN");
 	var Class = getInput("Course");
 	var major = getInput("Department");
 	var price = getInput("Price");
+
+	var listResult = ('<section><br><p><b>Title:</b> ' + $("#Title").val() + '</p>' + 
+					'<p><b>Author:</b> ' + $("#Author").val() + '</p>' +
+					'<p><b>ISBN:</b> ' + $("ISBN").val() + '</p>' + 
+					'<p><b>Course:</b> ' + $("#Class").val() + " " + $("#Department").val() + '</p>' +
+					'<p><b>Price:</b> ' + $("#Price").val() +'<p></section>');
+
+
 	
 	if (isbn != "" && price != ""){
-		sendSellInfo();	
-		window.alert("Your Post has been created!")	
+
+		swal({ 
+			    html:true,	
+			    title: "Create Post?",
+			    text: 
+			    	"This Post will be added to our database!" + 
+			   		'<br>' +
+			   		listResult, 
+			   showCancelButton: true,   
+			   confirmButtonColor: "#A5DC86",   
+			   confirmButtonText: "Yes, create it!",   
+			   closeOnConfirm: false 
+			}, 
+
+			function(){   
+				swal("Post Created!", "Your textbook was added!", "success");
+				sendSellInfo(); 
+			});
+	
+		//swal("Post Created!", "Your textbook was added!", "success");
 	}
 	
 	else {
-		window.alert("Please make sure ISBN and Price are provided");
+		swal("Oops...", "Please make sure ISBN and Price are provided", "error");
 	}
 }
