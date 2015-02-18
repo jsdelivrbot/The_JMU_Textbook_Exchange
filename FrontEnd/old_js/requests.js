@@ -84,29 +84,34 @@ function sendBuyInfo() {
 	    		list.appendChild(div);
 
 	    		var link = document.createElement("A");
-	    		link.setAttribute("href", "#");
+	    		link.setAttribute("id", "itemResults");
 	    		link.className= "list-group-item";
 	    		div.appendChild(link);
 
 	    		var header = document.createElement("H4");
 	    		header.className = "list-group-item-heading";
-	    		header.innerHTML= response.textbook[i].title;
+	    		header.setAttribute("id", "Title");
+	    		header.innerHTML= "Title: " + response.textbook[i].title;
 
 				var p1 = document.createElement("P");
 				p1.className= "list-group-item-text";
-				p1.innerHTML= response.textbook[i].author;
+				p1.setAttribute("id", "Author");
+				p1.innerHTML= "Author: " + response.textbook[i].author;
 
 				var p2 = document.createElement("P");
 				p2.className= "list-group-item-text";
-				p2.innerHTML= response.textbook[i].course;
+				p2.setAttribute("id", "Course");
+				p2.innerHTML= "Course: " + response.textbook[i].course;
 
 				var p3 = document.createElement("P");
 				p3.className= "list-group-item-text";
-				p3.innerHTML= response.textbook[i].isbn;
+				p3.setAttribute("id", "ISBN");
+				p3.innerHTML= "ISBN: "+ response.textbook[i].isbn;
 
 				var p4 = document.createElement("P");
 				p4.className= "list-group-item-text";
-				p4.innerHTML= response.textbook[i].price;
+				p4.setAttribute("id", "Price");
+				p4.innerHTML= "Price: " + response.textbook[i].price;
 
 				link.appendChild(header);
 				link.appendChild(p1);

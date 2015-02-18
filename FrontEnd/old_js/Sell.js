@@ -59,8 +59,8 @@ function validateSellInfo(){
 	var listResult = ('<section><br><p><b>Title:</b> ' + $("#Title").val() + '</p>' + 
 					'<p><b>Author:</b> ' + $("#Author").val() + '</p>' +
 					'<p><b>ISBN:</b> ' + $("ISBN").val() + '</p>' + 
-					'<p><b>Course:</b> ' + $("#Class").val() + " " + $("#Department").val() + '</p>' +
-					'<p><b>Price:</b> ' + $("#Price").val() +'<p></section>');
+					'<p><b>Course:</b> ' + $("#Department").val() + $("#Course").val() + '</p>' +
+					'<p><b>Price:</b> ' + $("#Price").val() +'</p></section>');
 
 
 	

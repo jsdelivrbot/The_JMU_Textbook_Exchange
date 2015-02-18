@@ -131,19 +131,14 @@ header p {
 	box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
 }
 
-hover:#buy, hover:#sell{
-	width:60%;
-	height:0%;
-	padding-top: 10%;
-	padding-bottom: 10%;
-	border-radius: 25px;
-	font-size: 2em;
-	color:#fff;
-	text-align:center;
-	background:#D5BE7A;
-	-webkit-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
-	-moz-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
-	box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+#buy:hover, #sell:hover{
+	text-decoration: none;
+}
+
+/**--Hover radial effect--**/
+.hvr-radial-out:before {
+	transition-duration: 0.5s;
+	background-color: #450084;
 }
 
 #buy{
@@ -163,7 +158,8 @@ hover:#buy, hover:#sell{
 /* BUYPAGE MAIN CONTENT */
 
 .outline{
-	background-color: #D5BE7A;
+	background-color: rgba(213, 190, 122, 0.5);
+	border:1px solid #D5BE7A;
 	padding: 10px;
 	border-radius: 6px;
 	margin-bottom: 30px;
@@ -172,13 +168,25 @@ hover:#buy, hover:#sell{
 	box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
 }
 
-#resultsOutline{
+#resultsContainer{
 	-webkit-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
 	-moz-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
 	box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
 	border-radius: 6px;
+	height: 25em;
+	border: 1px solid #D5BE7A;
+	background-color: rgba(213, 190, 122, 0.5);
+}
+
+#resultsOutline{
+	border-radius: 6px;
 	overflow: scroll;
-	max-height: 20em;
+	height: 19em;
+}
+
+#resultsHeader{
+	text-align: center;
+	color: #6B339D;
 }
 
 .input-group.input-group-lg{
@@ -187,11 +195,9 @@ hover:#buy, hover:#sell{
 
 li.list-group-item{
 	background-color: #D5BE7A;
-}
-
-li.list-group-item:first-child{
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
+	width: 80%;
+	margin-left: 10%;
+	border-radius: 6px;
 }
 
 div.list-group{

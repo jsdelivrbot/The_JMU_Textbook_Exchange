@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JMU Textbook Exchange </title>
 
+    <script src="js/jquery.js" type= "text/javascript"></script> 
+
 	<!-- Request Scripts -->
 	<script src="old_js/requests.js" type="text/javascript"></script>
 	<script src="old_js/buy.js" type="text/javascript"></script>
+
+	<!--Custom Scripts -->
+	<script src="sweetalert-master/lib/sweet-alert.min.js"></script>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +22,7 @@
     <link href="css/hover-min.css" rel="stylesheet" media="all">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel= "stylesheet">
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/lib/sweet-alert.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,7 +84,7 @@
 	<!--MAIN CONTENT -->
 	<div class="container-fluid">
 	  <div class="row">
-	  	<div class="col-sm-5 col-sm-offset-1" id="inputs">
+	  	<div class="col-sm-6 col-sm-offset-3" id="inputs">
   		  <div class= "outline">
 		  	<div class="input-group input-group-lg">
   			  <span class="input-group-addon glyphicon glyphicon-book" id="sizing-addon1"></span>
@@ -99,32 +105,17 @@
 			<button type="button" class="btn btn-primary btn-lg btn-block" id="SearchButton">Search</button>
 		  </div>
 	    </div>
-	  <div class="col-sm-5">
-	  	<ul class="list-group">
-		  <li class="list-group-item">
-		  	<div class="list-group">
-	  		  <a href="#" class="list-group-item">
-	   			<h4 class="list-group-item-heading" id="li_title">Title</h4>
-				<p class="list-group-item-text" id="li_author">Author</p>
-				<p class="list-group-item-text" id="li_ISBN">ISBN</p>
-				<p class="list-group-item-text" id="li_Course">Course</p>
-				<p class="list-group-item-text" id="li_Price">Price</p>
-	  		  </a>
-		  	</div>	
-		  </li>
-		  <li class="list-group-item">
-		  	<div class="list-group">
-	  		  <a href="#" class="list-group-item">
-	   	        <h4 class="list-group-item-heading" id="li_title_2">Title</h4>
-				<p class="list-group-item-text" id="li_author_2">Author</p>
-				<p class="list-group-item-text" id="li_ISBN_2">ISBN</p>
-				<p class="list-group-item-text" id="li_Course_2">Course</p>
-				<p class="list-group-item-text" id="li_Price_2">Price</p>
-	  		  </a>
-		  	</div>	
-		  </li>
-		</ul>
-	  </div>	
+	  </div>  
+
+	  <div class="row">
+		  <div class="col-sm-8 col-sm-offset-2">
+		  	<div id="resultsContainer">
+		  		<h2 id= "resultsHeader">Search Results</h2> 
+		  		<div id= "resultsOutline">
+			</div>  	
+			</div>
+		  </div>
+		</div>  	
 	</div>
 	<!--/MAIN CONTENT -->
     
@@ -132,7 +123,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- buy init -->
     <script type="text/javascript">init();</script>
   </body>

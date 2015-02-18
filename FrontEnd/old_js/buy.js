@@ -22,8 +22,36 @@ function registerEventHandlers(){
 	
 	searchButton = document.getElementById("SearchButton");
     searchButton.addEventListener("click", function() { 
-    validateBuyInfo();}, true);	
+    	validateBuyInfo();
+    }, true);
 }
+
+
+
+
+$(document).on('click', '#itemResults', function () {
+    
+	//var listResult = $(this).find('h4').text();
+
+    var listResult = ('<section><br><p>' + $(this).find('#Title').text() + '</p>' + 
+					'<p>' + $(this).find('#Author').text() + '</p>' +
+					'<p>' + $(this).find('#ISBN').text() + '</p>' + 
+					'<p>' + $(this).find('#Course').text() + 
+					'<p>' + $(this).find('#Price').text() +'</p></section>');  
+
+    swal({ 
+			    html: true,	
+			    title: "Textbook",
+			    text: 
+			   		listResult
+		}); 
+});
+
+
+
+
+
+
 
 /**
  *When passed a name of the DOM Element it returns its value
@@ -55,7 +83,12 @@ function validateBuyInfo(){
 
 	//conditional for sending required information
 	if (title != "" || author != "" || isbn != "" || course != ""){
-		sendBuyInfo();		
+		sendBuyInfo();
+
+		//scrolls the page to results
+		$('html, body').animate({
+        	scrollTop: $("#inputs").offset().top
+    	}, 2000);		
 	}
 	
 	else {
