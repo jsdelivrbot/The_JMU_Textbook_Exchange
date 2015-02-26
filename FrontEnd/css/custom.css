@@ -82,11 +82,6 @@ header p {
 	font-size: 2em;
 }
 
-
-
-
-
-
 /*-- Gradient-- */
 .gradient {
     background-color: #eadfbd;
@@ -100,7 +95,6 @@ header p {
     background-image: -ms-repeating-linear-gradient(top,rgb(213, 190, 122) 0%,rgb(255, 255, 255) 100%);
 }
  
- 
 /* IE8- CSS hack */
 @media \0screen\,screen\9 {
     .gradient {
@@ -110,6 +104,9 @@ header p {
 /*-- /Gradient-- */
 
 
+
+
+/*-------------------------------------------------------------------------*/
 
 
 
@@ -151,6 +148,10 @@ header p {
 	float: left;
 }
 
+
+
+
+/*-------------------------------------------------------------------------*/
 
 
 
@@ -203,8 +204,11 @@ li.list-group-item{
 div.list-group{
 	margin-bottom: 0px;
 }
-/* BUYPAGE MAIN CONTENT */
 
+
+
+
+/*-------------------------------------------------------------------------*/
 
 
 
@@ -215,9 +219,72 @@ div.list-group{
 	margin-left: 20%;
 }
 
-/* SELLPAGE MAIN CONTENT */
 
 
+
+/*-------------------------------------------------------------------------*/
+
+
+
+
+/* ABOUTPAGE MAIN CONTENT */
+#aboutFirst{
+	margin-top: 5%;
+}
+.aboutHeader{
+	color: #450084;
+	text-align: left;
+	font-size: 35px;
+	opacity: 0.8;
+}
+
+.aboutText{
+	font-size: 20px;
+	line-height: 125%;
+	font-weight: normal;
+	margin-top: 5%;
+}
+
+.icons{
+	max-width: 50%;
+	margin-top: 15%;
+	margin-left: 25%;
+}
+
+#ourTeam{
+	font-size: 45px;
+	margin-top: 10%;
+	text-align: center;
+}
+
+div.thumbnail{
+	margin-top: 5%;
+	-webkit-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+	-moz-box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+	box-shadow: 10px 14px 14px 1px rgba(0,0,0,0.35);
+	border: 1px solid #D5BE7A;
+}
+
+.caption img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+.caption img:hover{
+	border: 1px solid #450084;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+
+
+
+
+/*-------------------------------------------------------------------------*/
 
 
 /*--Responsive Changes--*/
