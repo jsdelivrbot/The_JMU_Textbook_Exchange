@@ -2,6 +2,7 @@
 var User = require('../app/Models/users.js');
 var Textbook = require('../app/Models/textbooks.js');
 var Course = require('../app/Models/courses.js');
+var sessions = require("client-sessions");
 
 module.exports = function(app, passport) {
 
@@ -13,44 +14,107 @@ module.exports = function(app, passport) {
 		next();
 	});
 
+	//Client-Sessions Middleware
+	app.use(sessions({
+		cookieName: 'mySession',
+		secret: 'asijrnf239a#2!^543wklgm*776knfd',
+		duration: 24 * 60 * 60 * 1000,
+		activeDuration: 1000 * 60 * 5
+	}));
+
+
+	app.use(function(req, res, next) {
+  		
+  		if (req.mySession.seenyou) {
+    		res.setHeader('X-Seen-You', 'true');
+  		} 
+
+  		else {
+    		// setting a property will automatically cause a Set-Cookie response
+    		// to be sent
+    		req.mySession.seenyou = true;
+    		res.setHeader('X-Seen-You', 'false');
+  		}
+  		next();
+	});
+
 	//Login Route
 	app.post('/login', function(req, res, next) {
 
-	 	passport.authenticate('local-login', function(err, user, info) {
-			if (err) {
-			      return next(err); // will generate a 500 error
-			    }
-			    // Generate a JSON response reflecting authentication status
-			    if (! user) {
-			      return res.send({ success : false, message : 'authentication failed' });
-			    }
-			    return res.send({ success : true, message : 'authentication succeeded' });
-			  })(req, res, next);
+		var user = new User();
+		user.username = req.body.username;
+		user.password = req.body.password;
+		user.phone = req.body.phone;
+		user.email = req.body.email;
+
+		User.findOne({}).where('username').equals(user.username).exec(function(err, result) {
+			if (err)
+				res.send(err);
+
+			//If no result occurs username cannot be found
+			if (!result){
+				res.send("Cannot find that username");
+				//console.log("No username");
+			}
+			//If user passwords do not match then return true... which evaluates to false
+			else if (!user.validPassword(req.body.password, result.password)) {
+				res.send("Password and username do not match");
+				//console.log("Wrong Password");
+			}
+
+			else {
+			req.mySession.user = result;
+			res.json({ "user": "has logged in" });
+
+			}
+		});
+
+	 	// passport.authenticate('local-login', function(err, user, info) {
+			// if (err) {
+			//       return next(err); // will generate a 500 error
+			//     }
+			//     // Generate a JSON response reflecting authentication status
+			//     if (! user) {
+			//       return res.send({ success : false, message : 'authentication failed' });
+			//     }
+			//     return res.send({ success : true, message : 'authentication succeeded' });
+			//   })(req, res, next);
 	});
 
 	//Sign-Up Route
 	app.post('/signup', function(req, res, next) {
-
-		var username = req.body.username;
-		var password = req.body.password;
-		var phone = req.body.phone;
-		var email = req.body.email;
-
-		res.send({ message: 'Signup started'});
 		
 		var user = new User();
-		user.username = this.username;
-		user.password = this.password;
-		user.phone = this.phone;
-		user.email = this.email;
+		user.username = req.body.username;
+		user.password = user.generateHash(req.body.password);
+		user.phone = req.body.phone;
+		user.email = req.body.email;
 
-		var text = User.username;
-		res.send({ meassage: text});
+		console.log(req.body.username);
 
-		user.save(function (err, User) {
-  			if (err) return console.error(err);
+		//Search for user to see if they already exist
+		User.findOne({}).where('username').equals(user.username).exec(function(err, result) {
+			if (err)
+				res.send(err);
+			//Find one returns null (unlike find which returns an empty array)
+			if (result == null){
+				//Save user if no others with that username exist
+				user.save(function(err) {
+					if (err)
+						res.send(err);
+
+					res.json({ message: 'user created!' });
+				});
+			}
+
+			else {
+
+				res.json({ message: 'username already exists'});
+			}
 
 		});
+
+
 
 
 		// passport.authenticate('local-signup', function(err, user, info) {
@@ -64,10 +128,11 @@ module.exports = function(app, passport) {
 		// 	    return res.send({ success : true, message : 'account creation succeeded' });
 		// 	  })(req, res, next);
 	});
-
+	
+	//logout
 	app.post('/logout', function(req, res) {
-
-		res.json({ message: 'logout'});
+		req.mySession.reset();
+		res.json({ message: 'You have been logged out'});
 	});
 
 	//MyPosts Route
@@ -79,7 +144,7 @@ module.exports = function(app, passport) {
 
 
 	//Search textbook route
-	app.post('/book/search', function(req, res) {
+	app.post('/book/search',isLoggedIn, function(req, res) {
 		var textbook = new Textbook();
 		var title = req.body.title;
 		var author = req.body.author;
@@ -92,8 +157,10 @@ module.exports = function(app, passport) {
 		textbook.title = req.body.title;  
 		textbook.author = req.body.author;;
 		textbook.price = req.body.price;
-		textbook.course = req.body.department + "_" + req.body.courseNo;
-		textbook.isbn = req.body.isbn; 
+		textbook.course = req.body.department + " " + req.body.courseNo;
+		textbook.isbn = req.body.isbn;
+
+		//var regex = new RegExp('noodles', 'i'); //--Didn't work keep trying 
 
 		// if (textbook.title != null){
 		// 	query += Textbook.where('title').equals(textbook.title);
@@ -127,7 +194,7 @@ module.exports = function(app, passport) {
 	});
 
 	//Add new textbook route
-	app.post('/book/create', function(req,res) { 
+	app.post('/book/create',isLoggedIn, function(req,res) { 
 //---------------------------------------------------This shit works-----------------------------------------------
 		var title = req.body.title;
 		var author = req.body.author;
@@ -143,25 +210,31 @@ module.exports = function(app, passport) {
 		textbook.publisher = req.body.publisher;
 		textbook.yearPublished = req.body.year;
 		textbook.price = req.body.price;
-		textbook.course = req.body.department + "_" + req.body.courseNo;
+		textbook.course = req.body.department + " " + req.body.courseNo;
 		textbook.isbn10 = req.body.isbn;
 
 		//Course object based on courses schema
 		var course = new Course();
-		course.course_title = req.body.department + "_" +req.body.courseNo;
+		course.course_title = req.body.department + " " +req.body.courseNo;
 		course.department = req.body.department;
 		course.course_no = req.body.courseNo;
 
 		//creates a new course in the DB if it exists
-		if (course.ifCourseExists == true) {
+		Course.findOne({}).where('course_title').equals(course.course_title).exec(function(err, result) {
+			if (err)
+				res.send(err);
+			//Find one returns null (unlike find which returns an empty array)
+			if (result == null){
+				//Save user if no others with that username exist
+				course.save(function(err) {
+					if (err)
+						res.send(err);
 
-			course.save(function(err) {
-				if (err)
-					res.send(err);
-			});
+					res.json({ message: 'Course created!' });
+				});
+			}
 
-
-		}
+		});
 
 		// save the textbook and check for errors
 		textbook.save(function(err) {
@@ -184,9 +257,12 @@ module.exports = function(app, passport) {
 function isLoggedIn(req, res, next) {
 
 	//if user us authenticated in the session carry on
-	if (req.isAuthenticated())
-		return next();
-
-	res.redirect('/')
-
+	if (!req.mySession.user) {
+		res.json({message: "Please log in to use this feature"});
+		console.log("Cookie invalid");
+	}
+	else {
+		console.log("Cookie worked");
+		next();
+	}
 }
